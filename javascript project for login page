@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>login-page</title>
+  <style>
+    body {
+      background-image: url(hgg.jpg);
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .h1 {
+      color: aliceblue;
+      text-align: center;
+      font-size: 30px;
+    }
+    .container {
+      height: 255px;
+      width: 300px;
+      background-color: rgba(22, 21, 21, 0.7);
+      margin: 200px;
+      padding: 20px;
+    }
+    .sign {
+      height: 40px;
+      width: 250px;
+      background-color: rgb(8, 159, 119);
+      color: aliceblue;
+    }
+    .sign:hover {
+      text-decoration: underline;
+      background-color: aquamarine;
+      cursor: pointer;
+      color: burlywood;
+    }
+    input {
+      height: 30px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form onsubmit="return validateForm()">
+      <center>
+        <h1 class="h1">Sign in</h1>
+        <input type="text" id="loginID" placeholder="  Login-ID" required /><br /><br />
+        <input type="password" id="password" placeholder="  Password" required /><br /><br />
+        <button type="submit" class="sign">Sign in</button>
+      </center>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      const loginID = document.getElementById("loginID").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      
+      const words = loginID.split(/\s+/);
+      if (!/^[A-Z]/.test(loginID)) {
+        alert("Login-ID must start with an uppercase letter.");
+        return false;
+      }
+      if (words.length <= 3) {
+        alert("Login-ID must contain more than three words.");
+        return false;
+      }
+
+      
+      if (!/^\d{4}$/.test(password)) {
+        alert("Password must be a 4-digit PIN.");
+        return false;
+      }
+
+      return true; 
+    }
+  </script>
+</body>
+</html>
